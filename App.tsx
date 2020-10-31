@@ -2,24 +2,20 @@
  * Copyright (c) 2020. Mikael Lazarev
  */
 
-import 'react-native-gesture-handler';
-import * as React from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 
+import configureStore from './src/store';
 import {ThemeProvider} from 'react-native-elements';
 import {theme} from './styles';
-
+import {AuthSwitcher} from './src/screens/AuthSwitcher';
 import {NavigationContainer} from '@react-navigation/native';
 
-import configureStore from './store';
-import {AuthSwitcher} from './screens/AuthSwitcher';
-import {enableScreens} from 'react-native-screens';
-import {BrowserRouter} from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.css';
-import './devices.min.css';
 
-enableScreens();
+// declare const global: {HermesInternal: null | {}};
+
+
+
 const store = configureStore();
 
 const App = () => {
@@ -27,9 +23,7 @@ const App = () => {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <BrowserRouter>
-            <AuthSwitcher />
-          </BrowserRouter>
+          <AuthSwitcher />
         </NavigationContainer>
       </ThemeProvider>
     </Provider>
