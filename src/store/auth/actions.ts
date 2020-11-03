@@ -5,13 +5,10 @@ import {Action} from 'redux';
 import {ThunkAction} from 'redux-thunk';
 
 import {RootState} from '../index';
-import {AUTH_API, SSO_ADDR} from '../../config';
+import {AUTH_API} from '../../config';
 import {
-  authenticate,
   createGetTokenAtStartupAction,
   createLogoutAction,
-  DataConnectRootStateI,
-  getFullUrlWithId,
 } from 'redux-data-connect';
 import {createOAuthLoginAction} from 'redux-data-connect/lib/auth/actions';
 
@@ -26,34 +23,11 @@ const tokenPersistenceSetter = async (token: string) => {
 
 const localDataPersistenceCleaner = async () => localStorage.clear();
 
-export const demoLogin = (
-  userId: string,
-  opHash: string = '0',
-): ThunkAction<
-  void,
-  DataConnectRootStateI,
-  unknown,
-  Action<string>
-> => async dispatch => {
-  console.log('DEMO_LOGIN');
-  dispatch(
-    authenticate(
-      getFullUrlWithId('/auth/demo/:id/', {id: userId, host: SSO_ADDR}),
-      '',
-      {
-        opHash,
-        tokenPersistenceSetter,
-      },
-    ),
-  );
-};
-
 // Login actions
 export const loginByGoogle = createOAuthLoginAction(
   AUTH_API.GoogleLoginEndpoint,
   tokenPersistenceSetter,
 );
-
 
 // Startup actions
 export const getTokenAtStartup = createGetTokenAtStartupAction(

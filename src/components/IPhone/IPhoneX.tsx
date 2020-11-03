@@ -3,20 +3,17 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import {Content} from './Content';
-import {TabMenu} from '../../screens/Phone/Menu';
 import {Dimensions, ScaledSize} from 'react-native';
+import {LoadingView} from 'rn-web-components';
 
 export interface IphoneXFrameProps {
   orientation: 'portrait' | 'landscape';
-  show: string | React.ReactElement;
-  title?: string;
+  url: string;
 }
 
 export function IphoneXFrame({
   orientation,
-  show,
-  title,
+  url,
 }: IphoneXFrameProps): React.ReactElement {
   const [ratio, setRatio] = useState(1);
   const [leftMargin, setLeftMargin] = useState(0);
@@ -64,7 +61,14 @@ export function IphoneXFrame({
       </div>
       <div className="inner-shadow" />
       <div className="screen">
-        <Content title={title || ''} show={show} />
+        <iframe
+          style={{
+            width: '100%',
+            height: '100%',
+            border: 0,
+          }}
+          src={url}
+        />
       </div>
     </div>
   );

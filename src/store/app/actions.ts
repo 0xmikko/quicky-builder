@@ -8,7 +8,7 @@ import {RootState} from '../index';
 import {Action} from 'redux';
 import {namespace} from '../profile';
 import {SocketEmitAction} from '../socketMiddleware';
-import {LIST_FAILURE, LIST_SUCCESS} from 'redux-data-connect';
+import {LIST_FAILURE} from 'redux-data-connect';
 
 export const connectSocket = (): ThunkAction<
   void,
@@ -19,21 +19,24 @@ export const connectSocket = (): ThunkAction<
   dispatch({
     type: 'SOCKET_ON',
     namespace,
-    event: 'app:updateList',
-    typeOnSuccess: APPS_PREFIX + LIST_SUCCESS,
+    event: 'app:token',
+    typeOnSuccess: 'APP_TOKEN',
   });
 };
 
-export const getList: (opHash: string) => SocketEmitAction = (opHash) => ({
+export const getToken: (opHash: string) => SocketEmitAction = opHash => ({
   type: 'SOCKET_EMIT',
   namespace,
-  event: 'app:list',
-  typeOnFailure: APPS_PREFIX + LIST_FAILURE,
+  event: 'app:getAppToken',
+  typeOnFailure: 'APP_TOKEN_FAILED',
   payload: undefined,
   opHash,
 });
 
-export const newApp: (url: string, opHash: string) => SocketEmitAction = (url: string, opHash) => ({
+export const newApp: (url: string, opHash: string) => SocketEmitAction = (
+  url: string,
+  opHash,
+) => ({
   type: 'SOCKET_EMIT',
   namespace,
   event: 'app:new',

@@ -4,13 +4,13 @@
 
 import {combineReducers} from 'redux';
 import {authReducer, operationReducer} from 'redux-data-connect';
-import apps from './apps/reducer';
+import app from './app/reducer';
 import chats from './chat/reducer';
 import profile from './profile/reducer';
 
 export default combineReducers({
   auth: authReducer,
-  apps,
+  app,
   chats,
   profile,
   operations: operationReducer,
