@@ -16,6 +16,7 @@ import actions from '../../store/actions';
 import {appsSelector} from '../../store/app';
 import {operationSelector} from 'redux-data-connect';
 import {LoadingView} from 'rn-web-components';
+import {Footer} from '../../components/Footer';
 
 export function MainWizardScreen(): React.ReactElement {
   const dispatch = useDispatch();
@@ -73,6 +74,7 @@ export function MainWizardScreen(): React.ReactElement {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </Container>
     </>
   );

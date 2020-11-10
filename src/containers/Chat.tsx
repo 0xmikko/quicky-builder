@@ -3,7 +3,7 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import {GiftedChat, IMessage} from 'react-web-gifted-chat';
+import {GiftedChat, IMessage, Reply} from 'react-native-gifted-chat';
 import actions from '../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {mapMessageToIMessage, Message} from '../core/message';
@@ -12,6 +12,7 @@ import {profileSelector} from '../store/profile';
 import {chatSelector} from '../store/chat';
 import {LoadingView} from 'rn-web-components';
 import {View} from 'react-native';
+import {Button} from 'react-native-elements';
 
 export function ChatScreen(): React.ReactElement {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export function ChatScreen(): React.ReactElement {
   const onSend = (newMessages: IMessage[]) => {
     // setMessages(GiftedChat.append(messages, newMessages as any));
     const message: Message = {
-      id: newMessages[0].id.toString(),
+      id: newMessages[0]._id.toString(),
       text: newMessages[0].text,
       createdAt: new Date(),
       user: profile,
@@ -51,18 +52,45 @@ export function ChatScreen(): React.ReactElement {
     );
   };
 
+  const onQuickReply = (newMessages: Reply[]) => {
+    let text = '';
+    newMessages.forEach(msg => {
+      text += msg.title;
+    });
+    dispatch(
+      actions.chats.postMessage(
+        {
+          text,
+        },
+        '1',
+      ),
+    );
+  };
+
   return (
     <View style={{width: '100%', height: '100%'}}>
-      <h1>Chat</h1>
+      {/*<h3>Assistant</h3>*/}
       <GiftedChat
         messages={iMessages}
         onSend={onSend}
+        onQuickReply={onQuickReply}
         user={{
-          id: profile.id,
+          _id: profile.id,
           name: profile.name,
           avatar: profile.avatar,
         }}
         showAvatarForEveryMessage={true}
+        // renderQuickReplies={repl => {
+        //   return (
+        //     <Button
+        //       title={repl.currentMessage?.quickReplies?.values[0].value || ''}
+        //       onPress={() => {
+        //         console.log('Hi');
+        //       }}
+        //       type={'outline'}
+        //     />
+        //   );
+        // }}
       />
     </View>
   );

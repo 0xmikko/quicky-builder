@@ -21,13 +21,13 @@ export function IphoneXFrame({
   const topMargin = 50;
 
   const sizeUpdateHandler = ({window}: {window: ScaledSize}) => {
-    const height = window.height - 70 - topMargin * 2;
+    const height = window.height - 120 - topMargin * 2;
     const ratio = height / 812;
     const width = 375 * ratio;
-    const leftMargin = (window.width / 2 - width) / 2 - 15;
+    const leftMarginC = (window.width / 2 - width) / 2 - 15;
 
     setRatio(ratio);
-    setLeftMargin(leftMargin);
+    setLeftMargin(leftMarginC);
   };
 
   useEffect(() => {

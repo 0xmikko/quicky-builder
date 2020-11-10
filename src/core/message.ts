@@ -3,7 +3,7 @@
  */
 
 import {Contact} from './contact';
-import {IMessage} from 'react-web-gifted-chat';
+import {IMessage} from 'react-native-gifted-chat';
 
 export interface Message {
   id: string;
@@ -11,13 +11,21 @@ export interface Message {
   createdAt: Date;
   user: Contact;
   pending: boolean;
+  image?: string;
+  video?: string;
+  audio?: string;
+  quickReplies?: any;
 }
 
-export function mapMessageToIMessage(message: Message) : IMessage{
+export function mapMessageToIMessage(message: Message): IMessage {
+  const profile = message.user;
   return {
-    id: message.id,
-    text: message.text,
-    createdAt: message.createdAt,
-    user: message.user,
+    ...message,
+    _id: message.id,
+    user: {
+      _id: profile.id,
+      name: profile.name,
+      avatar: profile.avatar,
+    },
   };
 }

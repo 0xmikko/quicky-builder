@@ -14,6 +14,7 @@ module.exports = override(
   ...addBabelPlugins(
     '@babel/plugin-transform-flow-strip-types',
     '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-transform-react-jsx'
   ),
   addWebpackModuleRule({
     test: /\.ttf$/,
@@ -39,6 +40,10 @@ module.exports = override(
     path.resolve(__dirname, 'node_modules/rn-mobile-components'),
     path.resolve(__dirname, 'node_modules/react-native-snap-carousel'),
     path.resolve(__dirname, 'node_modules/react-native-markdown-display'),
+    path.resolve(__dirname, 'node_modules/react-native-gifted-chat'),
+    path.resolve(__dirname, 'node_modules/react-native-lightbox'),
+    path.resolve(__dirname, 'node_modules/react-native-parsed-text'),
+    path.resolve(__dirname, 'node_modules/react-native-typing-animation'),
     path.resolve(__dirname, 'src'),
   ]),
 );
