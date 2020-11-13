@@ -15,7 +15,7 @@ export const connectSocket = (): ThunkAction<
   RootState,
   unknown,
   Action<string>
-> => async (dispatch) => {
+> => async dispatch => {
   dispatch({
     type: 'SOCKET_ON',
     namespace,
@@ -40,6 +40,15 @@ export const newApp: (url: string, opHash: string) => SocketEmitAction = (
   type: 'SOCKET_EMIT',
   namespace,
   event: 'app:new',
+  typeOnFailure: APPS_PREFIX + LIST_FAILURE,
+  payload: undefined,
+  opHash,
+});
+
+export const reset: (opHash: string) => SocketEmitAction = opHash => ({
+  type: 'SOCKET_EMIT',
+  namespace,
+  event: 'app:reset',
   typeOnFailure: APPS_PREFIX + LIST_FAILURE,
   payload: undefined,
   opHash,

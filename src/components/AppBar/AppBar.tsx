@@ -5,7 +5,6 @@
 import React from 'react';
 import {Container, Nav, Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import logo from '../../logo.png';
 import {AuthRightMenu} from './RightMenu';
 import {useSelector} from 'react-redux';
 import {profileSelector} from '../../store/profile';
@@ -31,7 +30,7 @@ export const AppBar = () => {
           <Link to="/">
             <span
               style={{color: 'white', fontSize: '18px', fontWeight: 'bold'}}>
-              Quicky Builder
+              Quicky App Builder
             </span>
           </Link>
         </Navbar.Brand>

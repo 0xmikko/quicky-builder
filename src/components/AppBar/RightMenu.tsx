@@ -16,6 +16,7 @@ export function AuthRightMenu({name}: AuthRightMenu): React.ReactElement {
   const dispatch = useDispatch();
 
   const onLogout = () => dispatch(actions.auth.logout());
+  const onResetSession = () => dispatch(actions.app.reset('Reset'));
   return (
     <Dropdown>
       <Dropdown.Toggle
@@ -35,9 +36,8 @@ export function AuthRightMenu({name}: AuthRightMenu): React.ReactElement {
       </Dropdown.Toggle>
 
       <Dropdown.Menu alignRight>
-        <Dropdown.Item href="#" onClick={onLogout}>
-          Logout
-        </Dropdown.Item>
+        <Dropdown.Item onClick={onResetSession}>Reset session</Dropdown.Item>
+        <Dropdown.Item onClick={onLogout}>Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

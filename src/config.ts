@@ -9,7 +9,7 @@ export const isDev = process.env.NODE_ENV === 'development';
 export const TEST_SERVER_ADDR = 'http://localhost:8000';
 
 export const MOBILE_ADDR = isDev
-  ? 'localhost:5000'
+  ? 'http://localhost:5000'
   : 'https://mobile.quicky.digital';
 
 export const BACKEND_ADDR = isDev

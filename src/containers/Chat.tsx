@@ -19,9 +19,12 @@ export function ChatScreen(): React.ReactElement {
   const [hash, setHash] = useState('0');
 
   useEffect(() => {
-    const newHash = Date.now().toString();
-    dispatch(actions.chats.getMessages(newHash));
-    setHash(newHash);
+    if (hash === '0') {
+      console.log('SEND-99');
+      const newHash = Date.now().toString();
+      dispatch(actions.chats.getMessages(newHash));
+      setHash(newHash);
+    }
   }, []);
 
   const messages = useSelector(chatSelector);
