@@ -69,7 +69,7 @@ export function MainWizardScreen(): React.ReactElement {
               lg={6}
               md={6}
               sm={6}
-              style={{height: 'calc(100vh - 70px)', padding: '15px'}}>
+              style={{height: 'calc(100vh - 70px)', paddingBottom: '25px'}}>
               <ChatScreen />
             </Col>
           </Row>

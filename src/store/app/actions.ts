@@ -15,12 +15,18 @@ export const connectSocket = (): ThunkAction<
   RootState,
   unknown,
   Action<string>
-> => async dispatch => {
+> => async (dispatch) => {
   dispatch({
     type: 'SOCKET_ON',
     namespace,
     event: 'app:token',
     typeOnSuccess: 'APP_TOKEN',
+  });
+  dispatch({
+    type: 'SOCKET_ON',
+    namespace,
+    event: 'app:screen',
+    typeOnSuccess: 'APP_SCREEN',
   });
 };
 

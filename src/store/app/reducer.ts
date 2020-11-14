@@ -12,7 +12,7 @@ const initialState = {
   token: '',
 };
 
-export default function(
+export default function (
   state: AppState = initialState,
   action: AppActions,
 ): AppState {

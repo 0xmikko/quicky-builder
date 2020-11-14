@@ -12,7 +12,7 @@ import {profileSelector} from '../store/profile';
 import {chatSelector} from '../store/chat';
 import {LoadingView} from 'rn-web-components';
 import {View} from 'react-native';
-import {Button} from 'react-native-elements';
+import {ChatComposer} from '../components/ChatComposer';
 
 export function ChatScreen(): React.ReactElement {
   const dispatch = useDispatch();
@@ -42,7 +42,11 @@ export function ChatScreen(): React.ReactElement {
       id: newMessages[0]._id.toString(),
       text: newMessages[0].text,
       createdAt: new Date(),
-      user: profile,
+      user: {
+        avatar_url: '',
+        id: '',
+        name: '',
+      },
       pending: true,
     };
     dispatch(
@@ -82,6 +86,7 @@ export function ChatScreen(): React.ReactElement {
           name: profile.name,
           avatar: profile.avatar,
         }}
+        renderComposer={ChatComposer}
         showAvatarForEveryMessage={true}
         // renderQuickReplies={repl => {
         //   return (

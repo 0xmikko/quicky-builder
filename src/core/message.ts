@@ -25,7 +25,10 @@ export function mapMessageToIMessage(message: Message): IMessage {
     user: {
       _id: profile.id,
       name: profile.name,
-      avatar: profile.avatar,
+      avatar:
+        profile.id === '888888888888888888888888'
+          ? '/quicky_avatar.png'
+          : profile.avatar_url,
     },
   };
 }

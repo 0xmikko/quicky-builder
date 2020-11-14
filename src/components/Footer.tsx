@@ -32,7 +32,7 @@ export function Footer(): React.ReactElement {
         </span>
       </CookieConsent>
       <Container className={'footer-content'}>
-        <div>&copy; 2020, Quicky for Stackdrive. All rights reserved.</div>
+        <div>&copy; 2020, Quicky for Quickbase. All rights reserved.</div>
         <div>Facebook</div>
       </Container>
     </footer>
