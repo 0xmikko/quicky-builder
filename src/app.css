@@ -272,8 +272,8 @@ img {
 .btn {
   font-size: 11px;
   line-height: 1.773;
-  background-color: #1f85ec;
-  border-color: #1f85ec;
+  background-color: #813ba1;
+  border-color: #813ba1;
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
@@ -283,8 +283,8 @@ img {
 
 .btn:hover {
   background-color: #fff;
-  border-color: #1f85ec;
-  color: #1f85ec;
+  border-color: #813ba1;
+  color: #813ba1;
   height: auto;
 }
 
