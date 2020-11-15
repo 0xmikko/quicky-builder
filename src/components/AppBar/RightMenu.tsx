@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {Dropdown} from 'react-bootstrap';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {useDispatch} from 'react-redux';
 import actions from '../../store/actions';
 
@@ -27,11 +26,6 @@ export function AuthRightMenu({name}: AuthRightMenu): React.ReactElement {
           marginTop: '5px',
         }}
         className={'dropdown-toggle-nocaret'}>
-        <FontAwesomeIcon
-          icon={'user-circle'}
-          size={'2x'}
-          style={{height: '18px'}}
-        />{' '}
         {name}
       </Dropdown.Toggle>
 
