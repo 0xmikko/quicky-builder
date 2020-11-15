@@ -13,7 +13,7 @@ const initialState: ChatState = {
   data: {},
 };
 
-export default function (
+export default function(
   state: ChatState = initialState,
   action: ChatActions,
 ): ChatState {
@@ -21,11 +21,7 @@ export default function (
     case 'CHATS_GET_MESSAGES':
       return {
         ...state,
-        data: {
-          ...state.data,
-          ...action.payload,
-        }
-
+        data: action.payload,
       };
 
     case 'CHATS_UPDATE_MESSAGE':
@@ -33,9 +29,8 @@ export default function (
         ...state,
         data: {
           ...state.data,
-          [action.payload.id] : action.payload,
-        }
-
+          [action.payload.id]: action.payload,
+        },
       };
 
     default:
