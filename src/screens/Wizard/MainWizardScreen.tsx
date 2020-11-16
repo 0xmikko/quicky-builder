@@ -48,7 +48,7 @@ export function MainWizardScreen(): React.ReactElement {
 
   return (
     <>
-      <Helmet title={'Welcome to Quicky'} />
+      <Helmet title={'Quicky App Builder'} />
       <Container
         fluid
         style={{
